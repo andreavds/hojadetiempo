@@ -48,7 +48,10 @@ export class ProyectoComponent {
       if (this.mostrarFormulario) {
         if (this.proyectos.some((proyecto) => proyecto.codigo === this.codigoProyecto)) {
           this.proyectoService
-            .actualizarProyecto({ codigo: this.codigoProyecto, descripcion: this.descripcionProyecto })
+            .actualizarProyecto({
+              codigo: this.codigoProyecto, descripcion: this.descripcionProyecto,
+              recurso: ''
+            })
             .then(() => {
               this.cargarProyectos();
               this.mostrarFormulario = false;
@@ -56,7 +59,10 @@ export class ProyectoComponent {
         } else {
           // Proyecto nuevo, realizar adición
           this.proyectoService
-            .agregarProyecto({ codigo: this.codigoProyecto, descripcion: this.descripcionProyecto })
+            .agregarProyecto({
+              codigo: this.codigoProyecto, descripcion: this.descripcionProyecto,
+              recurso: ''
+            })
             .then(() => {
               this.cargarProyectos();
               this.mostrarFormulario = false;

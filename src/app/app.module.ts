@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,6 +12,9 @@ import { ProyectoComponent } from './proyecto/proyecto.component';
 import { RecursoComponent } from './recurso/recurso.component';
 import { ReporteComponent } from './reporte/reporte.component';
 import { NotificacionService } from './notificacion/notificacion.service';
+
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
 
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms'; 
@@ -30,7 +34,10 @@ import { FormsModule } from '@angular/forms';
     MatButtonModule,
     MatDialogModule,
     CommonModule, 
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MatDatepickerModule,
+    MatMomentDateModule,
   ],
   exports: [
     MatButtonModule,

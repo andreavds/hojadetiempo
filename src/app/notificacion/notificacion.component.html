@@ -37,6 +37,8 @@
   </form>
   -->
 
+
+  <!--
   <div class="noti-container">
     <h2>Notificación</h2>
     <p>Hola yo le notifico</p>
@@ -75,3 +77,43 @@
         <button class="noti-button" type="submit">Notificar</button>
       </form>
   </div>  
+
+  !-->
+
+
+  <h2>Notificación</h2>
+<p>Hola yo le notifico</p>
+
+<form>
+  <div>
+    <label>Recurso:</label>
+    <select [(ngModel)]="recursoSeleccionado" [ngModelOptions]="{ standalone: true }">
+      <option *ngFor="let recurso of recursos" [value]="recurso.codigo">{{ recurso.nombre }}</option>
+    </select>
+  </div>
+
+  <div>
+    <label>Proyecto:</label>
+    <select [(ngModel)]="proyectoSeleccionado" [ngModelOptions]="{ standalone: true }">
+      <option *ngFor="let proyecto of proyectos" [value]="proyecto.codigo">{{ proyecto.descripcion }}</option>
+    </select>
+  </div>
+
+  <div>
+    <label>Tiempo dedicado (días):</label>
+    <input type="number" [(ngModel)]="tiempoDedicado" [ngModelOptions]="{ standalone: true }">
+  </div>
+
+  <div>
+    <label>Fecha:</label>
+    <input type="date" [(ngModel)]="fecha" [ngModelOptions]="{ standalone: true }">
+  </div>
+
+  <div>
+    <label>Porcentaje de avance:</label>
+    <input type="number" [(ngModel)]="porcentajeAvance" [ngModelOptions]="{ standalone: true }" min="1" max="100">
+    <span>%</span>
+  </div>
+
+  <button (click)="notificar()">Notificar</button>
+</form>

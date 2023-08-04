@@ -1,47 +1,29 @@
-/*
 import { Component } from '@angular/core';
-
-@Component({
-  selector: 'app-notificacion',
-  templateUrl: './notificacion.component.html',
-  styleUrls: ['./notificacion.component.css']
-})
-export class NotificacionComponent {
-
-}
-
-*/
-
-import { Component, OnInit } from '@angular/core';
-import { RecursoService, Recurso } from '../recurso/recurso.service';
+import { Notificacion, NotificacionService } from './notificacion.service';
 import { ProyectoService, Proyecto } from '../proyecto/proyecto.service';
+import { RecursoService, Recurso } from '../recurso/recurso.service';
 
 @Component({
   selector: 'app-notificacion',
   templateUrl: './notificacion.component.html',
   styleUrls: ['./notificacion.component.css']
 })
-export class NotificacionComponent implements OnInit {
+
+
+export class NotificacionComponent {
   recursos: Recurso[] = [];
   proyectos: Proyecto[] = [];
-  recursoSeleccionado: string;
-  proyectoSeleccionado: string;
-  tiempoDedicado: number;
-  fecha: Date = new Date();
-  porcentajeAvance: number;
+  recursoSeleccionado = '';
+  proyectoSeleccionado = '';
+  tiempoDedicado = 0;
+  fecha = '';
+  porcentajeAvance = 0;
 
   constructor(
+    private notificacionService: NotificacionService,
     private recursoService: RecursoService,
     private proyectoService: ProyectoService
   ) {
-    this.recursoSeleccionado = '';
-    this.proyectoSeleccionado = '';
-    this.tiempoDedicado = 0;
-    this.fecha = new Date();
-    this.porcentajeAvance = 0;
-  }
-
-  ngOnInit(): void {
     this.cargarRecursos();
     this.cargarProyectos();
   }
@@ -59,7 +41,27 @@ export class NotificacionComponent implements OnInit {
   }
 
   notificar(): void {
-    // Aquí puedes enviar los datos del formulario al componente de "reporte" o realizar la acción deseada
-    // Puedes utilizar un servicio o emitir un evento para pasar los datos.
+    const notificacion: Notificacion = {
+      proyectoCodigo: this.proyectoSeleccionado,
+      recursoCodigo: this.recursoSeleccionado,
+      tiempoDedicado: this.tiempoDedicado,
+      fecha: this.fecha,
+      porcentajeAvance: this.porcentajeAvance,
+      valor: undefined,
+      recurso: '',
+    };
+
+    console.log(notificacion);
+    
+    this.notificacionService
+      .agregarNotificacion(notificacion)
+      .then(() => {
+        alert('Notificación enviada con éxito.');
+        // Aquí podrías mostrar una notificación de éxito o redirigir a otra página
+      })
+      .catch((error) => {
+        // Manejo de errores al agregar la notificación
+        console.error('Error al agregar notificación:', error);
+      });
   }
 }
