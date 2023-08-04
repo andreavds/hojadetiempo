@@ -1,0 +1,27 @@
+<!--
+<button [disabled]="btnDisabled"> si </button>
+<input type="text" [value]="name">
+<progress max="100" [value]="age"> </progress>.
+<img width="100" [src]="img"/>
+
+<hr/>
+<h1> Hola amigos de youtube </h1>
+<h2> di tapu muchas veces {{ 'tapu'.repeat(5)}} Numero gracioso: {{ age }}</h2>
+<p> 3 + 3 = {{ 3 + 3 }} </p>
+<h3> Oye {{ name }} es hora de que vayas a {{ rightPlace }} </h3>
+<img src= {{img}} alt="image" >
+<h3> Si {{ name }} es hora de que vayas a {{ wrongPlace }} </h3>
+-->
+<header>
+<h1> Hoja de Tiempo para Proyectos </h1>
+<p> By: Los Luises y Andrea </p>
+
+  <nav>
+    <a routerLink=""> Home </a>
+    <a routerLink="/proyecto">Proyectos</a>
+    <a routerLink="/recurso">Recursos</a>
+    <a routerLink="/reporte">Reportes</a>
+  </nav>
+  <button mat-raised-button (click)="openNotificacion()"> Añadir notificacion </button>
+<router-outlet></router-outlet>
+</header>

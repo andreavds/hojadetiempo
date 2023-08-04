@@ -1,0 +1,77 @@
+<!--
+<h2>Notificación</h2>
+<p>Hola yo le notifico</p>
+
+<form (ngSubmit)="notificar()">
+    <div>
+      <label>Recurso:</label>
+      <select [(ngModel)]="recursoSeleccionado">
+        <option *ngFor="let recurso of recursos" [value]="recurso.codigo">{{ recurso.nombre }}</option>
+      </select>
+    </div>
+  
+    <div>
+      <label>Proyecto:</label>
+      <select [(ngModel)]="proyectoSeleccionado">
+        <option *ngFor="let proyecto of proyectos" [value]="proyecto.codigo">{{ proyecto.descripcion }}</option>
+      </select>
+    </div>
+  
+    <div>
+      <label>Tiempo dedicado (días):</label>
+      <input type="number" [(ngModel)]="tiempoDedicado" name="tiempoDedicado">
+    </div>
+  
+    <div>
+      <label>Fecha:</label>
+      <input type="date" [(ngModel)]="fecha" name="fecha">
+    </div>
+  
+    <div>
+      <label>Porcentaje de avance:</label>
+      <input type="number" [(ngModel)]="porcentajeAvance" name="porcentajeAvance" min="1" max="100">
+      <span>%</span>
+    </div>
+  
+    <button type="submit">Notificar</button>
+  </form>
+  -->
+
+  <div class="noti-container">
+    <h2>Notificación</h2>
+    <p>Hola yo le notifico</p>
+  
+    <form (ngSubmit)="notificar()">
+        <div>
+          <label>Recurso:</label>
+          <select [(ngModel)]="recursoSeleccionado">
+            <option *ngFor="let recurso of recursos" [value]="recurso.codigo">{{ recurso.nombre }}</option>
+          </select>
+        </div>
+      
+        <div>
+          <label>Proyecto:</label>
+          <select [(ngModel)]="proyectoSeleccionado">
+            <option *ngFor="let proyecto of proyectos" [value]="proyecto.codigo">{{ proyecto.descripcion }}</option>
+          </select>
+        </div>
+      
+        <div>
+          <label>Tiempo dedicado (días):</label>
+          <input type="number" [(ngModel)]="tiempoDedicado" name="tiempoDedicado">
+        </div>
+      
+        <div>
+          <label>Fecha:</label>
+          <input type="date" [(ngModel)]="fecha" name="fecha">
+        </div>
+      
+        <div>
+          <label>Porcentaje de avance:</label>
+          <input type="number" [(ngModel)]="porcentajeAvance" name="porcentajeAvance" min="1" max="100">
+          <span>%</span>
+        </div>
+      
+        <button class="noti-button" type="submit">Notificar</button>
+      </form>
+  </div>  

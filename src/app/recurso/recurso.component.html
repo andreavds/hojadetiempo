@@ -1,0 +1,32 @@
+<h1> HOLA SOY UN RECURSO </h1>
+
+<h2>Recursos</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Código</th>
+      <th>Nombre del Recurso</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let recurso of recursos">
+      <td>{{ recurso.codigo }}</td>
+      <td>{{ recurso.nombre }}</td>
+      <td>
+        <button (click)="editarRecurso(recurso.codigo)">Editar</button>
+        <button (click)="eliminarRecurso(recurso.codigo)">Eliminar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div>
+  <input type="text" [(ngModel)]="codigoRecurso" placeholder="ID del Recurso">
+  <button (click)="nuevoRecurso()">Añadir Nuevo Recurso</button>
+  <div *ngIf="mostrarFormulario">
+    <input type="text" [(ngModel)]="nombreRecurso" placeholder="Nombre del Recurso">
+    <button (click)="confirmarAccion()">Confirmar</button>
+  </div>
+</div>

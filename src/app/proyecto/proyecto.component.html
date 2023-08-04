@@ -1,0 +1,31 @@
+<h2>HOLA aqui estan los proyectos </h2>
+
+
+<table>
+    <thead>
+      <tr>
+        <th>Código</th>
+        <th>Descripción del Proyecto</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let proyecto of proyectos">
+        <td>{{ proyecto.codigo }}</td>
+        <td>{{ proyecto.descripcion }}</td>
+        <td>
+          <button (click)="editarProyecto(proyecto.codigo)">Editar</button>
+          <button (click)="eliminarProyecto(proyecto.codigo)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <div>
+    <input type="text" [(ngModel)]="codigoProyecto" placeholder="Código del Proyecto">
+    <button (click)="nuevoProyecto()">Añadir Nuevo Proyecto</button>
+    <div *ngIf="mostrarFormulario">
+      <input type="text" [(ngModel)]="descripcionProyecto" placeholder="Descripción del Proyecto">
+      <button (click)="confirmarAccion()">Confirmar</button>
+    </div>
+  </div>

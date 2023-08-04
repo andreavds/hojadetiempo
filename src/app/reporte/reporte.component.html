@@ -1,0 +1,98 @@
+
+<h1> reportadisimo papu xD :v </h1>
+
+<h2>Reporte de Proyecto</h2>
+
+<!-- Sección de Gráfica -->
+<div>
+  <h3>Gráfica de Avance</h3>
+  <div>
+    <canvas #grafica></canvas>
+  </div>
+</div>
+
+<!-- Sección de Tabla -->
+<div>
+  <h3>Tiempo Dedicado por Recurso</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Recurso</th>
+        <th>Tiempo Dedicado (días)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Aquí generamos filas para cada recurso con el tiempo dedicado -->
+      <tr *ngFor="let recursoTiempo of tiempoDedicadoPorRecurso">
+        <td>{{ recursoTiempo.recurso }}</td>
+        <td>{{ recursoTiempo.tiempo }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Sección de Comparación de Avances -->
+<div>
+  <h3>Comparación de Avances entre Proyectos</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Proyecto</th>
+        <th>Avance (%)</th>
+        <th>Tiempo Dedicado (días)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Aquí generamos filas para cada proyecto con su avance y tiempo dedicado -->
+      <tr *ngFor="let proyectoAvance of avancePorProyecto">
+        <td>{{ proyectoAvance.proyecto }}</td>
+        <td>{{ proyectoAvance.avance }}</td>
+        <td>{{ proyectoAvance.tiempo }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Sección de Notificación -->
+<div>
+  <h3>Notificación</h3>
+  <form (ngSubmit)="notificar()">
+    <!-- Campos del formulario para notificación -->
+    <!-- Recurso -->
+    <div>
+      <label>Recurso:</label>
+      <select [(ngModel)]="recursoSeleccionado">
+        <option *ngFor="let recurso of recursos" [value]="recurso.codigo">{{ recurso.nombre }}</option>
+      </select>
+    </div>
+
+    <!-- Proyecto -->
+    <div>
+      <label>Proyecto:</label>
+      <select [(ngModel)]="proyectoSeleccionado">
+        <option *ngFor="let proyecto of proyectos" [value]="proyecto.codigo">{{ proyecto.descripcion }}</option>
+      </select>
+    </div>
+
+    <!-- Tiempo Dedicado -->
+    <div>
+      <label>Tiempo dedicado (días):</label>
+      <input type="number" [(ngModel)]="tiempoDedicadoNotif" name="tiempoDedicadoNotif">
+    </div>
+
+    <!-- Fecha -->
+    <div>
+      <label>Fecha:</label>
+      <input type="date" [(ngModel)]="fechaNotif" name="fechaNotif">
+    </div>
+
+    <!-- Porcentaje de Avance -->
+    <div>
+      <label>Porcentaje de avance:</label>
+      <input type="number" [(ngModel)]="porcentajeAvanceNotif" name="porcentajeAvanceNotif" min="1" max="100">
+      <span>%</span>
+    </div>
+
+    <button type="submit">Notificar</button>
+  </form>
+</div>
